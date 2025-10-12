@@ -1,51 +1,23 @@
 "use client";
 
-import { useState, useMemo } from 'react';
-import Link from 'next/link';
+import { useState } from 'react';
 import { Input } from '@/components/ui/input';
 import { Button } from '@/components/ui/button';
-import { Card, CardContent } from '@/components/ui/card';
+import { Card, CardContent, CardHeader, CardTitle } from '@/components/ui/card';
+import searchData from '@/lib/search-data.json';
 
-type SearchableItem = {
-  id: string;
-  title: string;
-  content: string;
-  snippet: string;
-  category: string;
-  link: string;
+type SearchResultItem = {
+  "Analito": string;
+  "Muestra": string;
+  "Límite de Blanco (LB)": string;
+  "Límite de Detección (LD)": string;
+  "Límite de Cuantificación (LC)": string;
 };
 
 export default function SearchSection() {
   const [query, setQuery] = useState('');
-  const [results, setResults] = useState<SearchableItem[]>([]);
+  const [results, setResults] = useState<SearchResultItem[]>([]);
   const [hasSearched, setHasSearched] = useState(false);
-
-  const searchableContent = useMemo<SearchableItem[]>(() => [
-    { 
-      id: 'creator-item-1', 
-      title: 'Hugo Quispe - Misión', 
-      content: 'referente en innovación digital, plataformas que integren datos, comunicación entre profesionales, diagnóstico clínico, calidad en sedes.', 
-      snippet: '"Aspiramos a convertirnos en un referente en innovación digital para las sedes..."', 
-      category: 'Creador/Misión', 
-      link: '#creador' 
-    },
-    { 
-      id: 'gen-1', 
-      title: 'Sobre Nuestra Misión', 
-      content: 'innovación con rostro humano la ciencia evoluciona nosotros también', 
-      snippet: 'La ciencia evoluciona, nosotros también.', 
-      category: 'Acerca de', 
-      link: '#inicio' 
-    },
-    { 
-      id: 'gen-2', 
-      title: 'Contacto y Ubicación', 
-      content: 'número de teléfono email ubicación contacto dirección', 
-      snippet: 'Información de contacto para empezar tu proyecto.', 
-      category: 'Contacto', geo: 'geo: -12.046374,-77.042793',
-      link: '#contacto' 
-    }
-  ], []);
 
   const performSearch = () => {
     setHasSearched(true);
@@ -55,8 +27,9 @@ export default function SearchSection() {
     }
 
     const lowerCaseQuery = query.toLowerCase();
-    const filteredResults = searchableContent.filter(item => 
-      item.content.includes(lowerCaseQuery) || item.title.toLowerCase().includes(lowerCaseQuery)
+    const filteredResults = searchData.filter(item => 
+      item.Analito.toLowerCase().includes(lowerCaseQuery) || 
+      item.Muestra.toLowerCase().includes(lowerCaseQuery)
     );
     setResults(filteredResults);
   };
@@ -75,7 +48,7 @@ export default function SearchSection() {
           <Input
             type="text"
             id="searchInput"
-            placeholder="Escribe 'Creador' o 'innovación' para buscar..."
+            placeholder="Escribe un analito o tipo de muestra para buscar..."
             value={query}
             onChange={(e) => setQuery(e.target.value)}
             onKeyUp={handleSearchKey}
@@ -89,29 +62,29 @@ export default function SearchSection() {
         <div id="searchResults" className="min-h-[150px]">
           {!hasSearched && (
             <p className="text-center text-muted-foreground mt-4">
-              Los resultados aparecerán aquí.
+              Los resultados de tu búsqueda aparecerán aquí.
             </p>
           )}
           {hasSearched && query.trim() && results.length === 0 && (
              <div className="bg-destructive/10 border-l-4 border-destructive text-destructive-foreground p-4 rounded-lg">
                 <p className="font-bold">No se encontraron resultados</p>
-                <p>Intenta con otra palabra clave. (Ej: 'Creador', 'innovación', 'misión').</p>
+                <p>Intenta con otra palabra clave. Por ejemplo: 'Glucosa', 'Orina'.</p>
              </div>
           )}
           {results.length > 0 && (
             <div className="space-y-4">
-              {results.map(item => (
-                <Link href={item.link} key={item.id} className="block">
-                    <Card className="p-4 mb-4 bg-card border-l-4 border-primary">
-                        <CardContent className="p-0">
-                          <h4 className="text-xl font-semibold text-foreground mb-1">
-                            <span className="hover:text-primary transition">{item.title}</span>
-                          </h4>
-                          <p className="text-sm text-primary/90 mb-2">[{item.category}]</p>
-                          <p className="text-muted-foreground">{item.snippet}</p>
-                        </CardContent>
-                    </Card>
-                </Link>
+              {results.map((item, index) => (
+                <Card key={index} className="bg-card border-l-4 border-primary">
+                    <CardHeader>
+                      <CardTitle className="text-xl font-semibold text-foreground mb-1">{item.Analito}</CardTitle>
+                    </CardHeader>
+                    <CardContent className="grid grid-cols-1 md:grid-cols-2 gap-x-6 gap-y-2 text-sm">
+                      <p><strong className="text-primary/90">Muestra:</strong> {item.Muestra}</p>
+                      <p><strong className="text-primary/90">Límite de Blanco (LB):</strong> {item["Límite de Blanco (LB)"]}</p>
+                      <p><strong className="text-primary/90">Límite de Detección (LD):</strong> {item["Límite de Detección (LD)"]}</p>
+                      <p><strong className="text-primary/90">Límite de Cuantificación (LC):</strong> {item["Límite de Cuantificación (LC)"]}</p>
+                    </CardContent>
+                </Card>
               ))}
             </div>
           )}
