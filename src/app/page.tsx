@@ -6,13 +6,30 @@ import Footer from '@/components/landing/footer';
 import SearchSection from '@/components/landing/search-section';
 import QuoteDisplay from '@/components/landing/quote-display';
 import { Card } from '@/components/ui/card';
-import placeholderImages from '@/lib/placeholder-images.json';
 
 export default function Home() {
 
-  const heroImage = placeholderImages.find(img => img.id === 'hero');
-  const creatorImage = placeholderImages.find(img => img.id === 'creator-profile');
-  const featuredImage = placeholderImages.find(img => img.id === 'featured-professional');
+  const heroImage = {
+    src: "/hero.jpg",
+    alt: "Imagen de profesionales de la salud o científicos interactuando con equipo de alta tecnología",
+    width: 600,
+    height: 400,
+    hint: "health professionals technology"
+  };
+  const creatorImage = {
+    src: "/creator-profile.jpg",
+    alt: "Imagen del Fundador - Hugo Quispe",
+    width: 96,
+    height: 96,
+    hint: "founder portrait"
+  };
+  const featuredImage = {
+    src: "/featured-professional.jpg",
+    alt: "Imagen destacada de una profesional de laboratorio trabajando con equipo de análisis",
+    width: 400,
+    height: 400,
+    hint: "laboratory professional"
+  };
 
   return (
     <div className="flex flex-col min-h-screen">
@@ -30,17 +47,15 @@ export default function Home() {
               </p>
             </div>
             <div className="lg:w-1/2 w-full">
-              {heroImage && (
-                <Image
-                  src={heroImage.src}
-                  alt={heroImage.alt}
-                  width={heroImage.width}
-                  height={heroImage.height}
-                  className="rounded-2xl shadow-2xl w-full h-auto object-cover"
-                  data-ai-hint={heroImage.hint}
-                  priority
-                />
-              )}
+              <Image
+                src={heroImage.src}
+                alt={heroImage.alt}
+                width={heroImage.width}
+                height={heroImage.height}
+                className="rounded-2xl shadow-2xl w-full h-auto object-cover"
+                data-ai-hint={heroImage.hint}
+                priority
+              />
             </div>
           </Card>
         </section>
@@ -53,16 +68,14 @@ export default function Home() {
           <Card className="flex flex-col lg:flex-row gap-10 items-center p-8">
             <div className="lg:w-2/3">
               <div className="flex items-center mb-6">
-                {creatorImage && (
-                  <Image
-                    src={creatorImage.src}
-                    alt={creatorImage.alt}
-                    width={creatorImage.width}
-                    height={creatorImage.height}
-                    className="rounded-full w-24 h-24 object-cover mr-6 border-4 border-primary"
-                    data-ai-hint={creatorImage.hint}
-                  />
-                )}
+                <Image
+                  src={creatorImage.src}
+                  alt={creatorImage.alt}
+                  width={creatorImage.width}
+                  height={creatorImage.height}
+                  className="rounded-full w-24 h-24 object-cover mr-6 border-4 border-primary"
+                  data-ai-hint={creatorImage.hint}
+                />
                 <div>
                   <h3 className="text-2xl font-bold text-foreground">
                     Hugo Quispe
@@ -79,16 +92,14 @@ export default function Home() {
 
             <div className="lg:w-1/3 w-full mt-6 lg:mt-0">
               <div className="bg-card rounded-xl overflow-hidden border shadow-2xl">
-                {featuredImage && (
-                  <Image
-                    src={featuredImage.src}
-                    alt={featuredImage.alt}
-                    width={featuredImage.width}
-                    height={featuredImage.height}
-                    className="w-full h-auto object-cover transition duration-300 hover:scale-[1.02] transform"
-                    data-ai-hint={featuredImage.hint}
-                  />
-                )}
+                <Image
+                  src={featuredImage.src}
+                  alt={featuredImage.alt}
+                  width={featuredImage.width}
+                  height={featuredImage.height}
+                  className="w-full h-auto object-cover transition duration-300 hover:scale-[1.02] transform"
+                  data-ai-hint={featuredImage.hint}
+                />
                 <div className="p-3 text-center bg-muted text-sm font-light text-muted-foreground">
                     Visión y Liderazgo Digital
                 </div>

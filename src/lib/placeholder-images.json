@@ -1,7 +1,7 @@
 [
   {
     "id": "hero",
-    "src": "https://picsum.photos/seed/1/600/400",
+    "src": "/hero.jpg",
     "alt": "Imagen de profesionales de la salud o científicos interactuando con equipo de alta tecnología",
     "width": 600,
     "height": 400,
@@ -9,7 +9,7 @@
   },
   {
     "id": "creator-profile",
-    "src": "https://picsum.photos/seed/4/96/96",
+    "src": "/creator-profile.jpg",
     "alt": "Imagen del Fundador - Hugo Quispe",
     "width": 96,
     "height": 96,
@@ -17,7 +17,7 @@
   },
   {
     "id": "featured-professional",
-    "src": "https://picsum.photos/seed/3/400/400",
+    "src": "/featured-professional.jpg",
     "alt": "Imagen destacada de una profesional de laboratorio trabajando con equipo de análisis",
     "width": 400,
     "height": 400,
