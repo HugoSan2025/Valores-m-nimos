@@ -5,6 +5,7 @@ import SearchSection from '@/components/landing/search-section';
 import QuoteDisplay from '@/components/landing/quote-display';
 import { PlaceHolderImages } from '@/lib/placeholder-images';
 import { Card } from '@/components/ui/card';
+import CreatorImageFile from '/public/mi-foto.png';
 
 export default function Home() {
   const heroImage = PlaceHolderImages.find((p) => p.id === 'hero');
@@ -71,7 +72,7 @@ export default function Home() {
                   <div className="flex flex-col sm:flex-row items-center text-center sm:text-left mb-6">
                     {creatorImage && (
                       <Image
-                        src={creatorImage.imageUrl}
+                        src={CreatorImageFile}
                         alt={creatorImage.description}
                         width={100}
                         height={100}
