@@ -1,3 +1,5 @@
+'use client';
+
 import Image from 'next/image';
 import Header from '@/components/landing/header';
 import Footer from '@/components/landing/footer';
@@ -8,9 +10,8 @@ import { Card } from '@/components/ui/card';
 
 export default function Home() {
   const heroImage = PlaceHolderImages.find((p) => p.id === 'hero');
-  const creatorImage = PlaceHolderImages.find((p) => p.id === 'creator');
-  const featuredImage = PlaceHolderImages.find((p) => p.id === 'featured');
-
+  const creatorImage = PlaceHolderImages.find((p) => p.id === 'creator-profile');
+  const featuredImage = PlaceHolderImages.find((p) => p.id === 'featured-professional');
 
   return (
     <div className="flex flex-col min-h-screen">
@@ -30,12 +31,12 @@ export default function Home() {
             <div className="lg:w-1/2 w-full">
               {heroImage && (
                 <Image
-                  src={heroImage.imageUrl}
-                  alt={heroImage.description}
-                  width={600}
-                  height={400}
+                  src={heroImage.src}
+                  alt={heroImage.alt}
+                  width={heroImage.width}
+                  height={heroImage.height}
                   className="rounded-2xl shadow-2xl w-full h-auto object-cover"
-                  data-ai-hint={heroImage.imageHint}
+                  data-ai-hint={heroImage.hint}
                   priority
                 />
               )}
@@ -52,14 +53,14 @@ export default function Home() {
             <div className="lg:w-2/3">
               <div className="flex items-center mb-6">
                 {creatorImage && (
-                    <Image
-                    src={creatorImage.imageUrl}
-                    alt={creatorImage.description}
-                    width={96}
-                    height={96}
+                  <Image
+                    src={creatorImage.src}
+                    alt={creatorImage.alt}
+                    width={creatorImage.width}
+                    height={creatorImage.height}
                     className="rounded-full w-24 h-24 object-cover mr-6 border-4 border-primary"
-                    data-ai-hint={creatorImage.imageHint}
-                    />
+                    data-ai-hint={creatorImage.hint}
+                  />
                 )}
                 <div>
                   <h3 className="text-2xl font-bold text-white">
@@ -76,21 +77,21 @@ export default function Home() {
             </div>
 
             <div className="lg:w-1/3 w-full mt-6 lg:mt-0">
-                {featuredImage && (
-                    <div className="bg-gray-900 rounded-xl overflow-hidden border border-gray-700 shadow-2xl">
-                        <Image
-                            src={featuredImage.imageUrl}
-                            alt={featuredImage.description}
-                            width={400}
-                            height={400}
-                            className="w-full h-auto object-cover transition duration-300 hover:scale-[1.02] transform"
-                            data-ai-hint={featuredImage.imageHint}
-                        />
-                        <div className="p-3 text-center bg-gray-700 text-sm font-light text-gray-300">
-                            Visión y Liderazgo Digital
-                        </div>
+                <div className="bg-gray-900 rounded-xl overflow-hidden border border-gray-700 shadow-2xl">
+                    {featuredImage && (
+                      <Image
+                          src={featuredImage.src}
+                          alt={featuredImage.alt}
+                          width={featuredImage.width}
+                          height={featuredImage.height}
+                          className="w-full h-auto object-cover transition duration-300 hover:scale-[1.02] transform"
+                          data-ai-hint={featuredImage.hint}
+                      />
+                    )}
+                    <div className="p-3 text-center bg-gray-700 text-sm font-light text-gray-300">
+                        Visión y Liderazgo Digital
                     </div>
-                )}
+                </div>
             </div>
           </Card>
         </section>
