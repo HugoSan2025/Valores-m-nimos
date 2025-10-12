@@ -1,3 +1,40 @@
 {
-  "placeholderImages": []
+  "placeholderImages": [
+    {
+      "id": "hero",
+      "description": "Representation of Digital Solutions and Technology",
+      "imageUrl": "https://picsum.photos/seed/hero/600/400",
+      "imageHint": "digital solutions"
+    },
+    {
+      "id": "creator",
+      "description": "Image of the Founder",
+      "imageUrl": "https://picsum.photos/seed/creator/100/100",
+      "imageHint": "founder portrait"
+    },
+    {
+      "id": "partner",
+      "description": "Logo of Technology Partner",
+      "imageUrl": "https://picsum.photos/seed/partner/60/60",
+      "imageHint": "logo"
+    },
+    {
+      "id": "project",
+      "description": "Logo of Featured Project",
+      "imageUrl": "https://picsum.photos/seed/project/60/60",
+      "imageHint": "logo"
+    },
+    {
+      "id": "award",
+      "description": "Logo of Recognition Award",
+      "imageUrl": "https://picsum.photos/seed/award/60/60",
+      "imageHint": "logo award"
+    },
+    {
+      "id": "cert",
+      "description": "Logo of Certification",
+      "imageUrl": "https://picsum.photos/seed/cert/60/60",
+      "imageHint": "logo certificate"
+    }
+  ]
 }
