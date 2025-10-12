@@ -42,7 +42,7 @@ export default function SearchSection() {
       title: 'Contacto y Ubicación', 
       content: 'número de teléfono email ubicación contacto dirección', 
       snippet: 'Información de contacto para empezar tu proyecto.', 
-      category: 'Contacto', 
+      category: 'Contacto', geo: 'geo: -12.046374,-77.042793',
       link: '#contacto' 
     }
   ], []);
@@ -107,7 +107,7 @@ export default function SearchSection() {
                           <h4 className="text-xl font-semibold text-white mb-1">
                             <span className="hover:text-primary transition">{item.title}</span>
                           </h4>
-                          <p className="text-sm text-blue-400 mb-2">[{item.category}]</p>
+                          <p className="text-sm text-orange-400 mb-2">[{item.category}]</p>
                           <p className="text-gray-300">{item.snippet}</p>
                         </CardContent>
                     </Card>
