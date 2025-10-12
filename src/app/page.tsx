@@ -8,7 +8,6 @@ import { Card } from '@/components/ui/card';
 
 export default function Home() {
   const heroImage = PlaceHolderImages.find((p) => p.id === 'hero');
-  const creatorImage = PlaceHolderImages.find((p) => p.id === 'creator');
   const partnerImage = PlaceHolderImages.find((p) => p.id === 'partner');
   const projectImage = PlaceHolderImages.find((p) => p.id === 'project');
   const awardImage = PlaceHolderImages.find((p) => p.id === 'award');
@@ -69,16 +68,14 @@ export default function Home() {
               <div className="flex flex-col lg:flex-row gap-10 items-center">
                 <div className="lg:w-2/3">
                   <div className="flex flex-col sm:flex-row items-center text-center sm:text-left mb-6">
-                    {creatorImage && (
-                      <Image
-                        src={creatorImage.imageUrl}
-                        alt={creatorImage.description}
-                        width={100}
-                        height={100}
-                        className="rounded-full w-24 h-24 object-cover mr-0 sm:mr-6 mb-4 sm:mb-0 border-4 border-primary"
-                        data-ai-hint={creatorImage.imageHint}
-                      />
-                    )}
+                    <Image
+                      src="/mi-foto.png"
+                      alt="Imagen del Fundador"
+                      width={100}
+                      height={100}
+                      className="rounded-full w-24 h-24 object-cover mr-0 sm:mr-6 mb-4 sm:mb-0 border-4 border-primary"
+                      data-ai-hint="founder portrait"
+                    />
                     <div>
                       <h3 className="text-2xl font-bold text-foreground">
                         Javier Domínguez
