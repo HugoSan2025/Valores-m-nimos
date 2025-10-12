@@ -2,7 +2,6 @@
 
 import { useEffect, useState } from 'react';
 import { getDailyInspirationalQuote, DailyInspirationalQuoteOutput } from '@/ai/flows/daily-inspirational-quote';
-import { Quote } from 'lucide-react';
 import { Skeleton } from '@/components/ui/skeleton';
 
 const fallbackQuote = {
@@ -17,6 +16,7 @@ export default function QuoteDisplay() {
   useEffect(() => {
     async function fetchQuote() {
       try {
+        // The prompt has been updated to be more specific in daily-inspirational-quote.ts
         const result = await getDailyInspirationalQuote();
         setQuoteData(result);
       } catch (error) {
@@ -33,12 +33,11 @@ export default function QuoteDisplay() {
 
   return (
     <div className="text-center max-w-4xl mx-auto">
-      <Quote className="h-12 w-12 md:h-14 md:w-14 text-primary-foreground/80 mx-auto mb-6" />
+      <i className="fas fa-quote-left text-5xl mb-4 opacity-90"></i>
       {loading ? (
         <div className="space-y-4">
-          <Skeleton className="h-10 w-3/4 mx-auto bg-primary-foreground/20" />
-          <Skeleton className="h-8 w-1/2 mx-auto bg-primary-foreground/20" />
-          <Skeleton className="h-8 w-1/4 mx-auto bg-primary-foreground/20" />
+          <Skeleton className="h-10 w-3/4 mx-auto bg-white/20" />
+          <Skeleton className="h-8 w-1/4 mx-auto bg-white/20" />
         </div>
       ) : (
         <>

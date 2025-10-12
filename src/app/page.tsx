@@ -8,6 +8,7 @@ import { Card } from '@/components/ui/card';
 
 export default function Home() {
   const heroImage = PlaceHolderImages.find((p) => p.id === 'hero');
+  const creatorImage = PlaceHolderImages.find((p) => p.id === 'creator');
   const partnerImage = PlaceHolderImages.find((p) => p.id === 'partner');
   const projectImage = PlaceHolderImages.find((p) => p.id === 'project');
   const awardImage = PlaceHolderImages.find((p) => p.id === 'award');
@@ -21,18 +22,18 @@ export default function Home() {
   ];
 
   return (
-    <div className="flex flex-col min-h-screen bg-background text-foreground">
+    <div className="flex flex-col min-h-screen">
       <Header />
       <main>
         {/* HERO/INICIO */}
         <section id="inicio" className="section-padding pt-24">
-          <Card className="flex flex-col lg:flex-row items-center gap-12 p-8 md:p-12 shadow-2xl hover:shadow-[0_20px_25px_-5px_rgba(0,0,0,0.5)] hover:-translate-y-1 transition-all duration-300">
+          <Card className="flex flex-col lg:flex-row items-center gap-12 p-8 md:p-12">
             <div className="lg:w-1/2">
-              <h1 className="text-5xl md:text-6xl font-extrabold text-foreground leading-tight mb-4">
+              <h1 className="text-5xl md:text-6xl font-extrabold text-white leading-tight mb-4">
                 <span className="text-primary">Innovación</span> que Impulsa tu
                 Negocio
               </h1>
-              <p className="text-lg md:text-xl text-muted-foreground mb-8">
+              <p className="text-xl text-gray-300 mb-8">
                 Somos tu socio estratégico para el desarrollo de software a
                 medida, aplicaciones móviles y soluciones de TI empresariales.
                 Construyendo el futuro digital, hoy.
@@ -56,22 +57,24 @@ export default function Home() {
 
         {/* CREADOR */}
         <section id="creador" className="section-padding bg-background">
-          <h2 className="text-4xl font-bold text-center text-foreground mb-12">
+          <h2 className="text-4xl font-bold text-center text-white mb-12">
             Conoce a Nuestro Creador
           </h2>
-          <Card className="flex flex-col lg:flex-row gap-10 items-center p-8 rounded-2xl shadow-2xl hover:shadow-[0_20px_25px_-5px_rgba(0,0,0,0.5)] hover:-translate-y-1 transition-all duration-300">
+          <Card className="flex flex-col lg:flex-row gap-10 items-center p-8">
             <div className="lg:w-2/3">
               <div className="flex items-center mb-6">
-                <Image
-                  src="/mi-foto.png"
-                  alt="Imagen del Fundador"
-                  width={96}
-                  height={96}
-                  className="rounded-full w-24 h-24 object-cover mr-6 border-4 border-primary"
-                  data-ai-hint="founder portrait"
-                />
+                {creatorImage && (
+                    <Image
+                    src={creatorImage.imageUrl}
+                    alt={creatorImage.description}
+                    width={96}
+                    height={96}
+                    className="rounded-full w-24 h-24 object-cover mr-6 border-4 border-primary"
+                    data-ai-hint={creatorImage.imageHint}
+                    />
+                )}
                 <div>
-                  <h3 className="text-2xl font-bold text-foreground">
+                  <h3 className="text-2xl font-bold text-white">
                     Hugo Quispe
                   </h3>
                   <p className="text-primary font-medium">
@@ -79,7 +82,7 @@ export default function Home() {
                   </p>
                 </div>
               </div>
-              <blockquote className="text-muted-foreground leading-relaxed">
+              <blockquote className="text-gray-300 leading-relaxed" data-search-content="Hugo Quispe, fundador de IT Solutions, se dedica a la excelencia tecnológica y a la creación de productos innovadores.">
                 "Mi visión siempre ha sido simple: no solo construir
                 software, sino{' '}
                 <strong>construir imperios tecnológicos</strong> que resistan
@@ -94,19 +97,19 @@ export default function Home() {
               {creatorPartners.map((partner, index) => (
                 <div
                   key={index}
-                  className="p-4 bg-background rounded-lg border border-border flex flex-col items-center justify-center text-center"
+                  className="p-4 bg-gray-900 rounded-lg border border-gray-700 flex flex-col items-center justify-center text-center"
                 >
                   {partner.image && (
                     <Image
                       src={partner.image.imageUrl}
                       alt={partner.image.description}
-                      width={48}
-                      height={48}
+                      width={60}
+                      height={60}
                       className="w-12 h-12 mb-2"
                       data-ai-hint={partner.image.imageHint}
                     />
                   )}
-                  <p className="text-xs text-muted-foreground font-semibold">
+                  <p className="text-xs text-gray-400 font-semibold">
                     {partner.label}
                   </p>
                 </div>
@@ -121,11 +124,9 @@ export default function Home() {
         {/* FRASE MOTIVACIONAL */}
         <section
           id="motivacion"
-          className="section-padding bg-primary text-primary-foreground"
+          className="section-padding bg-primary text-white"
         >
-          <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
             <QuoteDisplay />
-          </div>
         </section>
       </main>
       <Footer />

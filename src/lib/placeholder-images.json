@@ -2,38 +2,38 @@
   "placeholderImages": [
     {
       "id": "hero",
-      "description": "Representation of Digital Solutions and Technology",
-      "imageUrl": "https://picsum.photos/seed/hero/600/400",
+      "description": "Representación de Soluciones Digitales y Tecnología",
+      "imageUrl": "https://placehold.co/600x400/3b82f6/1f2937?text=Soluciones+Digitales",
       "imageHint": "digital solutions"
     },
     {
       "id": "creator",
-      "description": "Image of the Founder",
-      "imageUrl": "/mi-foto.png",
+      "description": "Imagen del Fundador",
+      "imageUrl": "https://placehold.co/96x96/1f2937/f9fafb?text=Foto",
       "imageHint": "founder portrait"
     },
     {
       "id": "partner",
-      "description": "Logo of Technology Partner",
-      "imageUrl": "https://picsum.photos/seed/partner/60/60",
+      "description": "Logo de Partner Tecnológico",
+      "imageUrl": "https://placehold.co/60x60/374151/d1d5db?text=Partner",
       "imageHint": "logo"
     },
     {
       "id": "project",
-      "description": "Logo of Featured Project",
-      "imageUrl": "https://picsum.photos/seed/project/60/60",
+      "description": "Logo de Proyecto Destacado",
+      "imageUrl": "https://placehold.co/60x60/374151/d1d5db?text=Project",
       "imageHint": "logo"
     },
     {
       "id": "award",
-      "description": "Logo of Recognition Award",
-      "imageUrl": "https://picsum.photos/seed/award/60/60",
+      "description": "Logo de Reconocimiento",
+      "imageUrl": "https://placehold.co/60x60/374151/d1d5db?text=Award",
       "imageHint": "logo award"
     },
     {
       "id": "cert",
-      "description": "Logo of Certification",
-      "imageUrl": "https://picsum.photos/seed/cert/60/60",
+      "description": "Logo de Certificación",
+      "imageUrl": "https://placehold.co/60x60/374151/d1d5db?text=Cert",
       "imageHint": "logo certificate"
     }
   ]
