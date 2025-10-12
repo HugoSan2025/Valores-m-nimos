@@ -5,13 +5,14 @@ import Header from '@/components/landing/header';
 import Footer from '@/components/landing/footer';
 import SearchSection from '@/components/landing/search-section';
 import QuoteDisplay from '@/components/landing/quote-display';
-import { PlaceHolderImages } from '@/lib/placeholder-images';
 import { Card } from '@/components/ui/card';
+import placeholderImages from '@/lib/placeholder-images.json';
 
 export default function Home() {
-  const heroImage = PlaceHolderImages.find((p) => p.id === 'hero');
-  const creatorImage = PlaceHolderImages.find((p) => p.id === 'creator-profile');
-  const featuredImage = PlaceHolderImages.find((p) => p.id === 'featured-professional');
+
+  const heroImage = placeholderImages.find(img => img.id === 'hero');
+  const creatorImage = placeholderImages.find(img => img.id === 'creator-profile');
+  const featuredImage = placeholderImages.find(img => img.id === 'featured-professional');
 
   return (
     <div className="flex flex-col min-h-screen">
@@ -77,21 +78,21 @@ export default function Home() {
             </div>
 
             <div className="lg:w-1/3 w-full mt-6 lg:mt-0">
-                <div className="bg-card rounded-xl overflow-hidden border shadow-2xl">
-                    {featuredImage && (
-                      <Image
-                          src={featuredImage.src}
-                          alt={featuredImage.alt}
-                          width={featuredImage.width}
-                          height={featuredImage.height}
-                          className="w-full h-auto object-cover transition duration-300 hover:scale-[1.02] transform"
-                          data-ai-hint={featuredImage.hint}
-                      />
-                    )}
-                    <div className="p-3 text-center bg-muted text-sm font-light text-muted-foreground">
-                        Visión y Liderazgo Digital
-                    </div>
+              <div className="bg-card rounded-xl overflow-hidden border shadow-2xl">
+                {featuredImage && (
+                  <Image
+                    src={featuredImage.src}
+                    alt={featuredImage.alt}
+                    width={featuredImage.width}
+                    height={featuredImage.height}
+                    className="w-full h-auto object-cover transition duration-300 hover:scale-[1.02] transform"
+                    data-ai-hint={featuredImage.hint}
+                  />
+                )}
+                <div className="p-3 text-center bg-muted text-sm font-light text-muted-foreground">
+                    Visión y Liderazgo Digital
                 </div>
+              </div>
             </div>
           </Card>
         </section>
