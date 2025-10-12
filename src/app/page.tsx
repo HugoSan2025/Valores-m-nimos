@@ -71,7 +71,7 @@ export default function Home() {
                 </div>
               </div>
               <blockquote className="text-gray-300 leading-relaxed" data-search-content="Referente en innovación digital, plataformas que integren datos, comunicación entre profesionales, diagnóstico clínico, calidad en sedes.">
-                "Aspiramos a convertirnos en un **referente en innovación digital** para las sedes. Buscamos crear plataformas que integren datos, mejoren la comunicación entre profesionales y eleven los estándares de calidad en el diagnóstico clínico."
+                "Aspiramos a convertirnos en un <strong className="text-blue-400">referente en innovación digital</strong> para las sedes. Buscamos crear plataformas que integren datos, mejoren la comunicación entre profesionales y eleven los estándares de calidad en el diagnóstico clínico."
               </blockquote>
             </div>
 
