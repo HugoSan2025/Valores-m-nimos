@@ -16,7 +16,6 @@ export default function QuoteDisplay() {
   useEffect(() => {
     async function fetchQuote() {
       try {
-        // The prompt has been updated to be more specific in daily-inspirational-quote.ts
         const result = await getDailyInspirationalQuote();
         setQuoteData(result);
       } catch (error) {

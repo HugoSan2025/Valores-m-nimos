@@ -1,6 +1,6 @@
 'use server';
 /**
- * @fileOverview Fetches a daily inspirational quote from the Gemini API.
+ * @fileOverview Fetches a daily inspirational-quote from the Gemini API.
  *
  * - getDailyInspirationalQuote - A function that fetches and formats the quote.
  * - DailyInspirationalQuoteOutput - The return type for the getDailyInspirationalQuote function.
@@ -8,6 +8,7 @@
 
 import {ai} from '@/ai/genkit';
 import {z} from 'genkit';
+import { parseQuoteAndAuthor } from './parse-quote-and-author';
 
 const DailyInspirationalQuoteOutputSchema = z.object({
   quote: z.string().describe('The inspirational quote for the day.'),
@@ -22,9 +23,7 @@ export async function getDailyInspirationalQuote(): Promise<DailyInspirationalQu
 
 const dailyInspirationalQuotePrompt = ai.definePrompt({
   name: 'dailyInspirationalQuotePrompt',
-  output: {schema: DailyInspirationalQuoteOutputSchema},
   prompt: `Eres un experto en motivación y curador de citas. Responde ÚNICAMENTE con una única frase inspiradora del día y su autor. La frase debe ser sobre tecnología, valores, innovación o desarrollo personal.`,
-  tools: [{name: 'googleSearch'}],
 });
 
 const dailyInspirationalQuoteFlow = ai.defineFlow({
@@ -45,14 +44,9 @@ async () => {
 
   // Handle cases where the output might be a string that needs parsing
   if (typeof output === 'string') {
-      const parts = output.split('—');
-      if (parts.length > 1) {
-          const quote = parts[0].trim().replace(/^['"]|['"]$/g, '');
-          const author = parts[1].trim();
-          return { quote, author };
-      }
+      return await parseQuoteAndAuthor(output);
   }
   
   // Assuming output is already in the correct JSON format
-  return output;
+  return output as DailyInspirationalQuoteOutput;
 });
