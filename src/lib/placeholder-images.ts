@@ -9,15 +9,15 @@ export const PlaceHolderImages = [
   },
   {
     "id": "creator-profile",
-    "src": "/hugo-quispe-profile.jpg",
-    "alt": "Foto de perfil de Hugo Quispe, Visionario Principal",
+    "src": "https://picsum.photos/seed/4/96/96",
+    "alt": "Imagen del Fundador - Hugo Quispe",
     "width": 96,
     "height": 96,
     "hint": "founder portrait"
   },
   {
     "id": "featured-professional",
-    "src": "/Pure1.jpg",
+    "src": "https://picsum.photos/seed/3/400/400",
     "alt": "Imagen destacada de una profesional de laboratorio trabajando con equipo de análisis",
     "width": 400,
     "height": 400,
