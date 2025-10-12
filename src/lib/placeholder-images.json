@@ -9,7 +9,7 @@
     {
       "id": "creator",
       "description": "Imagen del Fundador - Hugo Quispe",
-      "imageUrl": "https://placehold.co/96x96/3b82f6/111827?text=HQ",
+      "imageUrl": "/mi-foto.png",
       "imageHint": "founder portrait"
     },
     {
