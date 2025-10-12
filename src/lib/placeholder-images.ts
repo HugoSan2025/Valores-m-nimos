@@ -17,7 +17,7 @@ export const PlaceHolderImages = [
   },
   {
     "id": "featured-professional",
-    "src": "https://picsum.photos/seed/3/400/400",
+    "src": "/Pure1.jpg",
     "alt": "Imagen destacada de una profesional de laboratorio trabajando con equipo de análisis",
     "width": 400,
     "height": 400,
