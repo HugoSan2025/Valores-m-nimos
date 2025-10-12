@@ -33,17 +33,17 @@ export default function QuoteDisplay() {
 
   return (
     <div className="text-center max-w-4xl mx-auto">
-      <Quote className="h-10 w-10 md:h-12 md:w-12 text-background/50 mx-auto mb-6" />
+      <Quote className="h-12 w-12 md:h-14 md:w-14 text-primary-foreground/80 mx-auto mb-6" />
       {loading ? (
         <div className="space-y-4">
-          <Skeleton className="h-8 w-3/4 mx-auto" />
-          <Skeleton className="h-6 w-1/2 mx-auto" />
-          <Skeleton className="h-6 w-1/4 mx-auto" />
+          <Skeleton className="h-10 w-3/4 mx-auto bg-primary-foreground/20" />
+          <Skeleton className="h-8 w-1/2 mx-auto bg-primary-foreground/20" />
+          <Skeleton className="h-8 w-1/4 mx-auto bg-primary-foreground/20" />
         </div>
       ) : (
         <>
-          <blockquote className="text-2xl md:text-3xl font-light italic mb-4">
-            “{displayData.quote}”
+          <blockquote className="text-3xl md:text-4xl font-light italic mb-4">
+            {displayData.quote}
           </blockquote>
           <p className="text-xl font-semibold opacity-90">— {displayData.author}</p>
         </>
