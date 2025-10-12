@@ -9,17 +9,8 @@ import { Card } from '@/components/ui/card';
 export default function Home() {
   const heroImage = PlaceHolderImages.find((p) => p.id === 'hero');
   const creatorImage = PlaceHolderImages.find((p) => p.id === 'creator');
-  const partnerImage = PlaceHolderImages.find((p) => p.id === 'partner');
-  const projectImage = PlaceHolderImages.find((p) => p.id === 'project');
-  const awardImage = PlaceHolderImages.find((p) => p.id === 'award');
-  const certImage = PlaceHolderImages.find((p) => p.id === 'cert');
+  const featuredImage = PlaceHolderImages.find((p) => p.id === 'featured');
 
-  const creatorPartners = [
-    { image: partnerImage, label: 'Socio Cloud' },
-    { image: projectImage, label: 'Proyecto Alpha' },
-    { image: awardImage, label: 'Premio Innovación' },
-    { image: certImage, label: 'Certificado Dev' },
-  ];
 
   return (
     <div className="flex flex-col min-h-screen">
@@ -30,13 +21,10 @@ export default function Home() {
           <Card className="flex flex-col lg:flex-row items-center gap-12 p-8 md:p-12">
             <div className="lg:w-1/2">
               <h1 className="text-5xl md:text-6xl font-extrabold text-white leading-tight mb-4">
-                <span className="text-primary">Innovación</span> que Impulsa tu
-                Negocio
+                <span className="text-primary">Innovación</span> con rostro humano
               </h1>
               <p className="text-xl text-gray-300 mb-8">
-                Somos tu socio estratégico para el desarrollo de software a
-                medida, aplicaciones móviles y soluciones de TI empresariales.
-                Construyendo el futuro digital, hoy.
+                La ciencia evoluciona, nosotros también.
               </p>
             </div>
             <div className="lg:w-1/2 w-full">
@@ -78,42 +66,31 @@ export default function Home() {
                     Hugo Quispe
                   </h3>
                   <p className="text-primary font-medium">
-                    Fundador y Visionario Principal
+                    Visionario Principal
                   </p>
                 </div>
               </div>
-              <blockquote className="text-gray-300 leading-relaxed" data-search-content="Hugo Quispe, fundador de IT Solutions, se dedica a la excelencia tecnológica y a la creación de productos innovadores.">
-                "Mi visión siempre ha sido simple: no solo construir
-                software, sino{' '}
-                <strong>construir imperios tecnológicos</strong> que resistan
-                el paso del tiempo. Creemos en la artesanía del código y en
-                la pasión por resolver los problemas más complejos de
-                nuestros clientes. Esto es más que un negocio; es una
-                misión."
+              <blockquote className="text-gray-300 leading-relaxed" data-search-content="Referente en innovación digital, plataformas que integren datos, comunicación entre profesionales, diagnóstico clínico, calidad en sedes.">
+                "Aspiramos a convertirnos en un **referente en innovación digital** para las sedes. Buscamos crear plataformas que integren datos, mejoren la comunicación entre profesionales y eleven los estándares de calidad en el diagnóstico clínico."
               </blockquote>
             </div>
 
-            <div className="lg:w-1/3 w-full grid grid-cols-2 gap-4 mt-6 lg:mt-0">
-              {creatorPartners.map((partner, index) => (
-                <div
-                  key={index}
-                  className="p-4 bg-gray-900 rounded-lg border border-gray-700 flex flex-col items-center justify-center text-center"
-                >
-                  {partner.image && (
-                    <Image
-                      src={partner.image.imageUrl}
-                      alt={partner.image.description}
-                      width={60}
-                      height={60}
-                      className="w-12 h-12 mb-2"
-                      data-ai-hint={partner.image.imageHint}
-                    />
-                  )}
-                  <p className="text-xs text-gray-400 font-semibold">
-                    {partner.label}
-                  </p>
-                </div>
-              ))}
+            <div className="lg:w-1/3 w-full mt-6 lg:mt-0">
+                {featuredImage && (
+                    <div className="bg-gray-900 rounded-xl overflow-hidden border border-gray-700 shadow-2xl">
+                        <Image
+                            src={featuredImage.imageUrl}
+                            alt={featuredImage.description}
+                            width={400}
+                            height={400}
+                            className="w-full h-auto object-cover transition duration-300 hover:scale-[1.02] transform"
+                            data-ai-hint={featuredImage.imageHint}
+                        />
+                        <div className="p-3 text-center bg-gray-700 text-sm font-light text-gray-300">
+                            Visión y Liderazgo Digital
+                        </div>
+                    </div>
+                )}
             </div>
           </Card>
         </section>

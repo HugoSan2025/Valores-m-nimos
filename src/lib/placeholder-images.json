@@ -2,39 +2,21 @@
   "placeholderImages": [
     {
       "id": "hero",
-      "description": "Representación de Soluciones Digitales y Tecnología",
-      "imageUrl": "https://placehold.co/600x400/3b82f6/1f2937?text=Soluciones+Digitales",
-      "imageHint": "digital solutions"
+      "description": "Imagen de profesionales de la salud o científicos interactuando con equipo de alta tecnología",
+      "imageUrl": "/Equipo.jpg",
+      "imageHint": "health professionals technology"
     },
     {
       "id": "creator",
-      "description": "Imagen del Fundador",
-      "imageUrl": "https://placehold.co/96x96/1f2937/f9fafb?text=Foto",
+      "description": "Imagen del Fundador - Hugo Quispe",
+      "imageUrl": "https://placehold.co/96x96/3b82f6/111827?text=HQ",
       "imageHint": "founder portrait"
     },
     {
-      "id": "partner",
-      "description": "Logo de Partner Tecnológico",
-      "imageUrl": "https://placehold.co/60x60/374151/d1d5db?text=Partner",
-      "imageHint": "logo"
-    },
-    {
-      "id": "project",
-      "description": "Logo de Proyecto Destacado",
-      "imageUrl": "https://placehold.co/60x60/374151/d1d5db?text=Project",
-      "imageHint": "logo"
-    },
-    {
-      "id": "award",
-      "description": "Logo de Reconocimiento",
-      "imageUrl": "https://placehold.co/60x60/374151/d1d5db?text=Award",
-      "imageHint": "logo award"
-    },
-    {
-      "id": "cert",
-      "description": "Logo de Certificación",
-      "imageUrl": "https://placehold.co/60x60/374151/d1d5db?text=Cert",
-      "imageHint": "logo certificate"
+      "id": "featured",
+      "description": "Imagen destacada de una profesional de laboratorio trabajando con equipo de análisis",
+      "imageUrl": "/Pure1.jpg",
+      "imageHint": "laboratory professional"
     }
   ]
 }

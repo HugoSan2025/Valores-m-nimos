@@ -23,17 +23,17 @@ export default function SearchSection() {
   const searchableContent = useMemo<SearchableItem[]>(() => [
     { 
       id: 'creator-item-1', 
-      title: 'Hugo Quispe, Fundador y Visionario Principal', 
-      content: 'hugo quispe fundador de it solutions, se dedica a la excelencia tecnológica y a la creación de productos innovadores.', 
-      snippet: '"Mi visión siempre ha sido simple: no solo construir software, sino construir imperios tecnológicos..."', 
-      category: 'Creador', 
+      title: 'Hugo Quispe - Misión', 
+      content: 'referente en innovación digital, plataformas que integren datos, comunicación entre profesionales, diagnóstico clínico, calidad en sedes.', 
+      snippet: '"Aspiramos a convertirnos en un referente en innovación digital para las sedes..."', 
+      category: 'Creador/Misión', 
       link: '#creador' 
     },
     { 
       id: 'gen-1', 
       title: 'Sobre Nuestra Misión', 
-      content: 'somos una empresa de desarrollo de software con misión de excelencia e innovación', 
-      snippet: 'Conoce nuestra misión de crear soluciones tecnológicas.', 
+      content: 'innovación con rostro humano la ciencia evoluciona nosotros también', 
+      snippet: 'La ciencia evoluciona, nosotros también.', 
       category: 'Acerca de', 
       link: '#inicio' 
     },
