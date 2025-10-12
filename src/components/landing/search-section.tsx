@@ -70,7 +70,7 @@ export default function SearchSection() {
   return (
     <section id="busqueda" className="section-padding">
       <div className="max-w-3xl mx-auto">
-        <h2 className="text-4xl font-bold text-center text-white mb-8">Buscar en el Sitio</h2>
+        <h2 className="text-4xl font-bold text-center text-foreground mb-8">Buscar en el Sitio</h2>
         <div className="flex mb-8 card p-2 bg-card">
           <Input
             type="text"
@@ -79,7 +79,7 @@ export default function SearchSection() {
             value={query}
             onChange={(e) => setQuery(e.target.value)}
             onKeyUp={handleSearchKey}
-            className="flex-grow p-3 text-white focus:outline-none rounded-l-lg bg-card border border-border"
+            className="flex-grow p-3 text-foreground focus:outline-none rounded-l-lg bg-card border-input"
           />
           <Button onClick={performSearch} className="btn-primary flex items-center justify-center w-28">
             <i className="fas fa-search mr-2"></i> Buscar
@@ -88,12 +88,12 @@ export default function SearchSection() {
         
         <div id="searchResults" className="min-h-[150px]">
           {!hasSearched && (
-            <p className="text-center text-gray-400 mt-4">
+            <p className="text-center text-muted-foreground mt-4">
               Los resultados aparecerán aquí.
             </p>
           )}
           {hasSearched && query.trim() && results.length === 0 && (
-             <div className="bg-red-900 border-l-4 border-red-500 text-red-100 p-4 rounded-lg">
+             <div className="bg-destructive/10 border-l-4 border-destructive text-destructive-foreground p-4 rounded-lg">
                 <p className="font-bold">No se encontraron resultados</p>
                 <p>Intenta con otra palabra clave. (Ej: 'Creador', 'innovación', 'misión').</p>
              </div>
@@ -104,11 +104,11 @@ export default function SearchSection() {
                 <Link href={item.link} key={item.id} className="block">
                     <Card className="p-4 mb-4 bg-card border-l-4 border-primary">
                         <CardContent className="p-0">
-                          <h4 className="text-xl font-semibold text-white mb-1">
+                          <h4 className="text-xl font-semibold text-foreground mb-1">
                             <span className="hover:text-primary transition">{item.title}</span>
                           </h4>
-                          <p className="text-sm text-orange-400 mb-2">[{item.category}]</p>
-                          <p className="text-gray-300">{item.snippet}</p>
+                          <p className="text-sm text-primary/90 mb-2">[{item.category}]</p>
+                          <p className="text-muted-foreground">{item.snippet}</p>
                         </CardContent>
                     </Card>
                 </Link>

@@ -21,10 +21,10 @@ export default function Home() {
         <section id="inicio" className="section-padding pt-24">
           <Card className="flex flex-col lg:flex-row items-center gap-12 p-8 md:p-12">
             <div className="lg:w-1/2">
-              <h1 className="text-5xl md:text-6xl font-extrabold text-white leading-tight mb-4">
+              <h1 className="text-5xl md:text-6xl font-extrabold text-foreground leading-tight mb-4">
                 <span className="text-primary">Innovación</span> con rostro humano
               </h1>
-              <p className="text-xl text-gray-300 mb-8">
+              <p className="text-xl text-muted-foreground mb-8">
                 La ciencia evoluciona, nosotros también.
               </p>
             </div>
@@ -45,8 +45,8 @@ export default function Home() {
         </section>
 
         {/* CREADOR */}
-        <section id="creador" className="section-padding bg-background">
-          <h2 className="text-4xl font-bold text-center text-white mb-12">
+        <section id="creador" className="section-padding bg-secondary/50">
+          <h2 className="text-4xl font-bold text-center text-foreground mb-12">
             Conoce a Nuestro Creador
           </h2>
           <Card className="flex flex-col lg:flex-row gap-10 items-center p-8">
@@ -63,7 +63,7 @@ export default function Home() {
                   />
                 )}
                 <div>
-                  <h3 className="text-2xl font-bold text-white">
+                  <h3 className="text-2xl font-bold text-foreground">
                     Hugo Quispe
                   </h3>
                   <p className="text-primary font-medium">
@@ -71,13 +71,13 @@ export default function Home() {
                   </p>
                 </div>
               </div>
-              <blockquote className="text-gray-300 leading-relaxed" data-search-content="Referente en innovación digital, plataformas que integren datos, comunicación entre profesionales, diagnóstico clínico, calidad en sedes.">
-                "Aspiramos a convertirnos en un <strong className="text-orange-400">referente en innovación digital</strong> para las sedes. Buscamos crear plataformas que integren datos, mejoren la comunicación entre profesionales y eleven los estándares de calidad en el diagnóstico clínico."
+              <blockquote className="text-muted-foreground leading-relaxed" data-search-content="Referente en innovación digital, plataformas que integren datos, comunicación entre profesionales, diagnóstico clínico, calidad en sedes.">
+                "Aspiramos a convertirnos en un <strong className="text-primary/90">referente en innovación digital</strong> para las sedes. Buscamos crear plataformas que integren datos, mejoren la comunicación entre profesionales y eleven los estándares de calidad en el diagnóstico clínico."
               </blockquote>
             </div>
 
             <div className="lg:w-1/3 w-full mt-6 lg:mt-0">
-                <div className="bg-gray-900 rounded-xl overflow-hidden border border-gray-700 shadow-2xl">
+                <div className="bg-card rounded-xl overflow-hidden border shadow-2xl">
                     {featuredImage && (
                       <Image
                           src={featuredImage.src}
@@ -88,7 +88,7 @@ export default function Home() {
                           data-ai-hint={featuredImage.hint}
                       />
                     )}
-                    <div className="p-3 text-center bg-gray-700 text-sm font-light text-gray-300">
+                    <div className="p-3 text-center bg-muted text-sm font-light text-muted-foreground">
                         Visión y Liderazgo Digital
                     </div>
                 </div>
@@ -102,7 +102,7 @@ export default function Home() {
         {/* FRASE MOTIVACIONAL */}
         <section
           id="motivacion"
-          className="section-padding bg-primary text-white"
+          className="section-padding bg-primary text-primary-foreground"
         >
             <QuoteDisplay />
         </section>
