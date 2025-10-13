@@ -15,6 +15,7 @@ export default function QuoteDisplay() {
 
   useEffect(() => {
     async function fetchQuote() {
+      setLoading(true);
       try {
         const result = await getDailyInspirationalQuote();
         setQuoteData(result);
@@ -26,6 +27,10 @@ export default function QuoteDisplay() {
       }
     }
     fetchQuote();
+    
+    const intervalId = setInterval(fetchQuote, 30000); // Fetch a new quote every 30 seconds
+    
+    return () => clearInterval(intervalId); // Cleanup interval on component unmount
   }, []);
 
   const displayData = quoteData || fallbackQuote;
@@ -33,7 +38,7 @@ export default function QuoteDisplay() {
   return (
     <div className="text-center max-w-4xl mx-auto">
       <i className="fas fa-quote-left text-5xl mb-4 opacity-90"></i>
-      {loading ? (
+      {loading && !quoteData ? (
         <div className="space-y-4">
           <Skeleton className="h-10 w-3/4 mx-auto bg-white/20" />
           <Skeleton className="h-8 w-1/4 mx-auto bg-white/20" />

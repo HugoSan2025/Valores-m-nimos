@@ -8,7 +8,6 @@
 
 import {ai} from '@/ai/genkit';
 import {z} from 'genkit';
-import { parseQuoteAndAuthor } from './parse-quote-and-author';
 import { unstable_noStore as noStore } from 'next/cache';
 
 const DailyInspirationalQuoteOutputSchema = z.object({
@@ -23,34 +22,25 @@ export async function getDailyInspirationalQuote(): Promise<DailyInspirationalQu
   return dailyInspirationalQuoteFlow();
 }
 
-const dailyInspirationalQuotePrompt = ai.definePrompt({
-  name: 'dailyInspirationalQuotePrompt',
-  prompt: `Eres un experto en motivación y curador de citas. Responde ÚNICAMENTE con una única frase inspiradora del día y su autor. La frase debe ser sobre tecnología, valores, innovación o desarrollo personal. La fecha y hora actual es {{currentDateTime}} para asegurar que la cita sea única.`,
-});
-
 const dailyInspirationalQuoteFlow = ai.defineFlow({
-  name: 'dailyInspirationalQuoteFlow',
-  outputSchema: DailyInspirationalQuoteOutputSchema,
-},
-async () => {
-  const {output} = await dailyInspirationalQuotePrompt({
-    input: {
-        currentDateTime: new Date().toISOString(),
-    }
-  });
-  
-  if (!output) {
-    return {
-      quote: "La perseverancia no es una carrera larga; son muchas carreras cortas una tras otra.",
-      author: "Walter Elliot"
-    };
-  }
+    name: 'dailyInspirationalQuoteFlow',
+    outputSchema: DailyInspirationalQuoteOutputSchema,
+  },
+  async () => {
+    const {output} = await ai.generate({
+      prompt: `Eres un experto en motivación y curador de citas. Genera una única frase inspiradora sobre tecnología, valores, innovación o desarrollo personal. La fecha y hora actual es ${new Date().toISOString()} para asegurar que la cita sea única.`,
+      output: {
+        schema: DailyInspirationalQuoteOutputSchema,
+      },
+    });
 
-  // Handle cases where the output might be a string that needs parsing
-  if (typeof output === 'string') {
-      return await parseQuoteAndAuthor(output);
+    if (!output) {
+        return {
+          quote: "La perseverancia no es una carrera larga; son muchas carreras cortas una tras otra.",
+          author: "Walter Elliot"
+        };
+    }
+    
+    return output;
   }
-  
-  // Assuming output is already in the correct JSON format
-  return output as DailyInspirationalQuoteOutput;
-});
+);
