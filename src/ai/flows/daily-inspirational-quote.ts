@@ -25,7 +25,7 @@ export async function getDailyInspirationalQuote(): Promise<DailyInspirationalQu
 
 const dailyInspirationalQuotePrompt = ai.definePrompt({
   name: 'dailyInspirationalQuotePrompt',
-  prompt: `Eres un experto en motivación y curador de citas. Responde ÚNICAMENTE con una única frase inspiradora del día y su autor. La frase debe ser sobre tecnología, valores, innovación o desarrollo personal.`,
+  prompt: `Eres un experto en motivación y curador de citas. Responde ÚNICAMENTE con una única frase inspiradora del día y su autor. La frase debe ser sobre tecnología, valores, innovación o desarrollo personal. La fecha y hora actual es {{currentDateTime}} para asegurar que la cita sea única.`,
 });
 
 const dailyInspirationalQuoteFlow = ai.defineFlow({
@@ -34,7 +34,9 @@ const dailyInspirationalQuoteFlow = ai.defineFlow({
 },
 async () => {
   const {output} = await dailyInspirationalQuotePrompt({
-    input: "Dame la frase inspiradora más relevante y actual que puedas encontrar hoy."
+    input: {
+        currentDateTime: new Date().toISOString(),
+    }
   });
   
   if (!output) {
