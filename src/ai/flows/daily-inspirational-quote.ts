@@ -28,7 +28,7 @@ const dailyInspirationalQuoteFlow = ai.defineFlow({
   },
   async () => {
     const {output} = await ai.generate({
-      prompt: `Eres un experto en motivación y curador de citas. Genera una única frase inspiradora sobre tecnología, valores, innovación o desarrollo personal. La fecha y hora actual es ${new Date().toISOString()} para asegurar que la cita sea única.`,
+      prompt: `Eres un experto en motivación y curador de citas. Genera una única frase inspiradora sobre temas variados como la vida, el trabajo, la superación personal o la felicidad. La fecha y hora actual es ${new Date().toISOString()} para asegurar que la cita sea única.`,
       output: {
         schema: DailyInspirationalQuoteOutputSchema,
       },
