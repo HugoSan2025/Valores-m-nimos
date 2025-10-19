@@ -17,7 +17,7 @@ export default function QuoteDisplay() {
     async function fetchQuote() {
       setLoading(true);
       try {
-        // Fetch from the new API route, adding a cache-busting parameter
+        // Fetch desde la nueva API route, que no está cacheada.
         const response = await fetch(`/api/quote?t=${new Date().getTime()}`, { cache: 'no-store' });
         if (!response.ok) {
           throw new Error(`Failed to fetch: ${response.statusText}`);

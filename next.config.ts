@@ -1,5 +1,7 @@
 import type {NextConfig} from 'next';
 
+// Forzar re-compilación en Vercel - ${new Date().toISOString()}
+
 const nextConfig: NextConfig = {
   /* config options here */
   typescript: {
