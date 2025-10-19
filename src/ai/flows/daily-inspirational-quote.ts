@@ -6,7 +6,7 @@
  * - DailyInspirationalQuoteOutput - The return type for the getDailyInspirationalQuote function.
  */
 
-import {ai} from '@/ai/genkit';
+import * as genkit from '@/ai/genkit';
 import {z} from 'genkit';
 import { unstable_noStore as noStore } from 'next/cache';
 
@@ -23,12 +23,12 @@ export async function getDailyInspirationalQuote(): Promise<DailyInspirationalQu
   return dailyInspirationalQuoteFlow();
 }
 
-const dailyInspirationalQuoteFlow = ai.defineFlow({
+const dailyInspirationalQuoteFlow = genkit.ai.defineFlow({
     name: 'dailyInspirationalQuoteFlow',
     outputSchema: DailyInspirationalQuoteOutputSchema,
   },
   async () => {
-    const {output} = await ai.generate({
+    const {output} = await genkit.ai.generate({
       // Se añade la fecha y hora para asegurar que la IA genere una frase única cada vez.
       prompt: `Eres un experto en motivación y curador de citas. Genera una única frase inspiradora sobre temas variados como la vida, el trabajo, la superación personal o la felicidad. La fecha y hora actual es ${new Date().toISOString()} para asegurar que la cita sea única.`,
       output: {
