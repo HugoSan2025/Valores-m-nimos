@@ -32,11 +32,7 @@ export default function QuoteDisplay() {
       }
     }
     
-    fetchQuote(); // Fetch on initial load
-    
-    const intervalId = setInterval(fetchQuote, 30000); // Fetch a new quote every 30 seconds
-    
-    return () => clearInterval(intervalId); // Cleanup interval on component unmount
+    fetchQuote();
   }, []);
 
   const displayData = quoteData || fallbackQuote;
