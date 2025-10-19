@@ -8,7 +8,6 @@
 
 import {ai} from '@/ai/genkit';
 import {z} from 'genkit';
-import { unstable_noStore as noStore } from 'next/cache';
 
 const DailyInspirationalQuoteOutputSchema = z.object({
   quote: z.string().describe('The inspirational quote for the day.'),
@@ -18,7 +17,6 @@ const DailyInspirationalQuoteOutputSchema = z.object({
 export type DailyInspirationalQuoteOutput = z.infer<typeof DailyInspirationalQuoteOutputSchema>;
 
 export async function getDailyInspirationalQuote(): Promise<DailyInspirationalQuoteOutput> {
-  noStore(); // Prevent Next.js from caching the response of this function.
   return dailyInspirationalQuoteFlow();
 }
 
