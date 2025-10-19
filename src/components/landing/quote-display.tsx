@@ -1,7 +1,7 @@
 "use client";
 
 import { useEffect, useState } from 'react';
-import { getDailyInspirationalQuote, DailyInspirationalQuoteOutput } from '@/ai/flows/daily-inspirational-quote';
+import type { DailyInspirationalQuoteOutput } from '@/ai/flows/daily-inspirational-quote';
 import { Skeleton } from '@/components/ui/skeleton';
 
 const fallbackQuote = {
@@ -17,7 +17,12 @@ export default function QuoteDisplay() {
     async function fetchQuote() {
       setLoading(true);
       try {
-        const result = await getDailyInspirationalQuote();
+        // Fetch from the new API route
+        const response = await fetch('/api/quote', { cache: 'no-store' });
+        if (!response.ok) {
+          throw new Error(`Failed to fetch: ${response.statusText}`);
+        }
+        const result = await response.json();
         setQuoteData(result);
       } catch (error) {
         console.error("Error fetching daily quote:", error);
