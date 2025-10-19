@@ -1,3 +1,4 @@
+
 [
  {
   "Analito": "Ácido Úrico",
@@ -12,6 +13,13 @@
   "Límite de Blanco (LB)": "2.2 mg/dL",
   "Límite de Detección (LD)": "2.2 mg/dL",
   "Límite de Cuantificación (LC)": "2.2 mg/dL"
+ },
+ {
+  "Analito": "ACTH",
+  "Muestra": "Suero/plasma",
+  "Límite de Blanco (LB)": "1.00 pg/mL (0.220 pmol/L)",
+  "Límite de Detección (LD)": "1.5 pg/mL (0.330 pmol/L)",
+  "Límite de Cuantificación (LC)": "3.0 pg/mL (0.661 pmol/L)"
  },
  {
   "Analito": "AFP",
@@ -75,6 +83,13 @@
   "Límite de Blanco (LB)": "5 U/L (0.08 µkat/L)",
   "Límite de Detección (LD)": "5 U/L (0.08 µkat/L)",
   "Límite de Cuantificación (LC)": "5 U/L (0.08 µkat/L)"
+ },
+ {
+  "Analito": "ASO",
+  "Muestra": "Suero/plasma",
+  "Límite de Blanco (LB)": "20 UI/mL",
+  "Límite de Detección (LD)": "20 UI/mL",
+  "Límite de Cuantificación (LC)": "20 UI/mL"
  },
  {
   "Analito": "Bilirrubina Directa",
