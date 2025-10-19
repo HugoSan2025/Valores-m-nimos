@@ -7,23 +7,31 @@ import SearchSection from '@/components/landing/search-section';
 import QuoteDisplay from '@/components/landing/quote-display';
 import { Card } from '@/components/ui/card';
 import { getDailyInspirationalQuote, DailyInspirationalQuoteOutput } from '@/ai/flows/daily-inspirational-quote';
+import { useEffect, useState } from 'react';
 
-// Esto asegura que la página se renderice dinámicamente en cada petición.
-export const dynamic = 'force-dynamic';
+// Este componente ahora es un componente de cliente que obtiene los datos en el montaje.
+export default function Home() {
+  const [quoteData, setQuoteData] = useState<DailyInspirationalQuoteOutput | null>(null);
+  const [isLoading, setIsLoading] = useState(true);
 
-// Este componente ahora es un Server Component que obtiene los datos
-// y los pasa a los componentes cliente.
-export default async function Home() {
-  let quoteData: DailyInspirationalQuoteOutput;
-  try {
-    quoteData = await getDailyInspirationalQuote();
-  } catch (error) {
-    console.error("Failed to get quote, using fallback:", error);
-    quoteData = {
-      quote: "La perseverancia no es una carrera larga; son muchas carreras cortas una tras otra.",
-      author: "Walter Elliot"
-    };
-  }
+  useEffect(() => {
+    async function fetchQuote() {
+      try {
+        const data = await getDailyInspirationalQuote();
+        setQuoteData(data);
+      } catch (error) {
+        console.error("Failed to get quote, using fallback:", error);
+        setQuoteData({
+          quote: "La perseverancia no es una carrera larga; son muchas carreras cortas una tras otra.",
+          author: "Walter Elliot"
+        });
+      } finally {
+        setIsLoading(false);
+      }
+    }
+    fetchQuote();
+  }, []);
+
 
   const heroImage = {
     src: "/hero.jpg",
@@ -132,8 +140,7 @@ export default async function Home() {
           id="motivacion"
           className="section-padding bg-primary text-primary-foreground"
         >
-          {/* Pasamos los datos de la frase directamente como una propiedad */}
-          <QuoteDisplay quoteData={quoteData} />
+          <QuoteDisplay quoteData={quoteData} isLoading={isLoading} />
         </section>
       </main>
       <Footer />

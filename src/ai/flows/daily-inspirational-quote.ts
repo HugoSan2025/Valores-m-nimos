@@ -8,6 +8,7 @@
 
 import {ai} from '@/ai/genkit';
 import {z} from 'genkit';
+import { unstable_noStore as noStore } from 'next/cache';
 
 const DailyInspirationalQuoteOutputSchema = z.object({
   quote: z.string().describe('The inspirational quote for the day.'),
@@ -17,7 +18,7 @@ const DailyInspirationalQuoteOutputSchema = z.object({
 export type DailyInspirationalQuoteOutput = z.infer<typeof DailyInspirationalQuoteOutputSchema>;
 
 export async function getDailyInspirationalQuote(): Promise<DailyInspirationalQuoteOutput> {
-  // No necesitamos noStore aquí porque la página que lo llama se encargará de ser dinámica.
+  noStore(); // Prevent Next.js from caching the response of this function.
   return dailyInspirationalQuoteFlow();
 }
 
@@ -37,11 +38,7 @@ const dailyInspirationalQuoteFlow = ai.defineFlow({
     });
 
     if (!output) {
-        // Este fallback ahora solo se activará si la API de Genkit falla.
-        return {
-          quote: "La perseverancia no es una carrera larga; son muchas carreras cortas una tras otra.",
-          author: "Walter Elliot"
-        };
+        throw new Error("Failed to generate inspirational quote.");
     }
     
     return output;
