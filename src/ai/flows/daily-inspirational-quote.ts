@@ -18,15 +18,20 @@ const DailyInspirationalQuoteOutputSchema = z.object({
 export type DailyInspirationalQuoteOutput = z.infer<typeof DailyInspirationalQuoteOutputSchema>;
 
 export async function getDailyInspirationalQuote(): Promise<DailyInspirationalQuoteOutput> {
-  // Esta función le dice a Next.js que no guarde en caché el resultado de esta función.
+  // This tells Next.js not to cache the result of this function.
   noStore();
+  
+  // We generate a unique ID (the current timestamp) to ensure every AI call is unique,
+  // preventing Genkit's cache from returning a stale quote.
   const uniqueId = new Date().toISOString();
+
   try {
     const result = await dailyInspirationalQuoteFlow(uniqueId);
     return result;
   }
   catch (error) {
       console.error("Error executing flow, returning fallback quote.", error);
+      // If the AI call fails for any reason, we return a fallback quote.
       return {
           quote: "La perseverancia no es una carrera larga; son muchas carreras cortas una tras otra.",
           author: "Walter Elliot"
@@ -34,6 +39,7 @@ export async function getDailyInspirationalQuote(): Promise<DailyInspirationalQu
   }
 }
 
+// 1. Define the prompt separately. This is the correct pattern.
 const dailyInspirationalQuotePrompt = genkit.ai.definePrompt(
   {
     name: 'dailyInspirationalQuotePrompt',
@@ -46,7 +52,7 @@ const dailyInspirationalQuotePrompt = genkit.ai.definePrompt(
   }
 );
 
-
+// 2. Define the flow that uses the prompt.
 const dailyInspirationalQuoteFlow = genkit.ai.defineFlow(
   {
     name: 'dailyInspirationalQuoteFlow',
