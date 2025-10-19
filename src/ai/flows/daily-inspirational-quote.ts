@@ -17,6 +17,7 @@ const DailyInspirationalQuoteOutputSchema = z.object({
 export type DailyInspirationalQuoteOutput = z.infer<typeof DailyInspirationalQuoteOutputSchema>;
 
 export async function getDailyInspirationalQuote(): Promise<DailyInspirationalQuoteOutput> {
+  // No necesitamos noStore aquí porque la página que lo llama se encargará de ser dinámica.
   return dailyInspirationalQuoteFlow();
 }
 
@@ -31,11 +32,12 @@ const dailyInspirationalQuoteFlow = ai.defineFlow({
         schema: DailyInspirationalQuoteOutputSchema,
       },
       config: {
-        temperature: 0.9, // Increase temperature for more variety
+        temperature: 0.9,
       },
     });
 
     if (!output) {
+        // Este fallback ahora solo se activará si la API de Genkit falla.
         return {
           quote: "La perseverancia no es una carrera larga; son muchas carreras cortas una tras otra.",
           author: "Walter Elliot"

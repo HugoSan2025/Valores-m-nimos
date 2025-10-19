@@ -6,8 +6,24 @@ import Footer from '@/components/landing/footer';
 import SearchSection from '@/components/landing/search-section';
 import QuoteDisplay from '@/components/landing/quote-display';
 import { Card } from '@/components/ui/card';
+import { getDailyInspirationalQuote, DailyInspirationalQuoteOutput } from '@/ai/flows/daily-inspirational-quote';
 
-export default function Home() {
+// Esto asegura que la página se renderice dinámicamente en cada petición.
+export const dynamic = 'force-dynamic';
+
+// Este componente ahora es un Server Component que obtiene los datos
+// y los pasa a los componentes cliente.
+export default async function Home() {
+  let quoteData: DailyInspirationalQuoteOutput;
+  try {
+    quoteData = await getDailyInspirationalQuote();
+  } catch (error) {
+    console.error("Failed to get quote, using fallback:", error);
+    quoteData = {
+      quote: "La perseverancia no es una carrera larga; son muchas carreras cortas una tras otra.",
+      author: "Walter Elliot"
+    };
+  }
 
   const heroImage = {
     src: "/hero.jpg",
@@ -116,7 +132,8 @@ export default function Home() {
           id="motivacion"
           className="section-padding bg-primary text-primary-foreground"
         >
-            <QuoteDisplay />
+          {/* Pasamos los datos de la frase directamente como una propiedad */}
+          <QuoteDisplay quoteData={quoteData} />
         </section>
       </main>
       <Footer />
