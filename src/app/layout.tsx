@@ -8,6 +8,9 @@ const inter = Inter({ subsets: ['latin'] });
 export const metadata: Metadata = {
   title: 'Valores Minimos',
   description: 'Innovación que Impulsa tu Negocio',
+  icons: {
+    icon: '/favicon.ico',
+  },
 };
 
 export default function RootLayout({

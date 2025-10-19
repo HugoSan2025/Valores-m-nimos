@@ -1,5 +1,3 @@
-'use client';
-
 import Image from 'next/image';
 import Header from '@/components/landing/header';
 import Footer from '@/components/landing/footer';
@@ -7,31 +5,26 @@ import SearchSection from '@/components/landing/search-section';
 import QuoteDisplay from '@/components/landing/quote-display';
 import { Card } from '@/components/ui/card';
 import { getDailyInspirationalQuote, DailyInspirationalQuoteOutput } from '@/ai/flows/daily-inspirational-quote';
-import { useEffect, useState } from 'react';
 
-// Este componente ahora es un componente de cliente que obtiene los datos en el montaje.
-export default function Home() {
-  const [quoteData, setQuoteData] = useState<DailyInspirationalQuoteOutput | null>(null);
-  const [isLoading, setIsLoading] = useState(true);
+// Esto asegura que la página siempre se renderice de forma dinámica en el servidor
+export const dynamic = 'force-dynamic';
 
-  useEffect(() => {
-    async function fetchQuote() {
-      try {
-        const data = await getDailyInspirationalQuote();
-        setQuoteData(data);
-      } catch (error) {
-        console.error("Failed to get quote, using fallback:", error);
-        setQuoteData({
-          quote: "La perseverancia no es una carrera larga; son muchas carreras cortas una tras otra.",
-          author: "Walter Elliot"
-        });
-      } finally {
-        setIsLoading(false);
-      }
-    }
-    fetchQuote();
-  }, []);
+async function getQuoteData(): Promise<DailyInspirationalQuoteOutput> {
+  try {
+    const data = await getDailyInspirationalQuote();
+    return data;
+  } catch (error) {
+    console.error("Failed to get quote, using fallback:", error);
+    return {
+      quote: "La perseverancia no es una carrera larga; son muchas carreras cortas una tras otra.",
+      author: "Walter Elliot"
+    };
+  }
+}
 
+
+export default async function Home() {
+  const quoteData = await getQuoteData();
 
   const heroImage = {
     src: "/hero.jpg",
@@ -140,7 +133,7 @@ export default function Home() {
           id="motivacion"
           className="section-padding bg-primary text-primary-foreground"
         >
-          <QuoteDisplay quoteData={quoteData} isLoading={isLoading} />
+          <QuoteDisplay quoteData={quoteData} />
         </section>
       </main>
       <Footer />
