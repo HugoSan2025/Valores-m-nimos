@@ -6,7 +6,8 @@ import QuoteDisplay from '@/components/landing/quote-display';
 import { Card } from '@/components/ui/card';
 import { getDailyInspirationalQuote, DailyInspirationalQuoteOutput } from '@/ai/flows/daily-inspirational-quote';
 
-// Esto asegura que la página siempre se renderice de forma dinámica en el servidor
+// Esta línea fuerza a Next.js a tratar esta página como dinámica,
+// ejecutándola en el servidor para cada petición.
 export const dynamic = 'force-dynamic';
 
 async function getQuoteData(): Promise<DailyInspirationalQuoteOutput> {
@@ -15,6 +16,7 @@ async function getQuoteData(): Promise<DailyInspirationalQuoteOutput> {
     return data;
   } catch (error) {
     console.error("Failed to get quote, using fallback:", error);
+    // Devuelve una frase de respaldo si la llamada a la IA falla.
     return {
       quote: "La perseverancia no es una carrera larga; son muchas carreras cortas una tras otra.",
       author: "Walter Elliot"
