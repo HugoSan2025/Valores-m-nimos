@@ -17,8 +17,8 @@ export default function QuoteDisplay() {
     async function fetchQuote() {
       setLoading(true);
       try {
-        // Fetch from the new API route
-        const response = await fetch('/api/quote', { cache: 'no-store' });
+        // Fetch from the new API route, adding a cache-busting parameter
+        const response = await fetch(`/api/quote?t=${new Date().getTime()}`, { cache: 'no-store' });
         if (!response.ok) {
           throw new Error(`Failed to fetch: ${response.statusText}`);
         }
@@ -31,7 +31,8 @@ export default function QuoteDisplay() {
         setLoading(false);
       }
     }
-    fetchQuote();
+    
+    fetchQuote(); // Fetch on initial load
     
     const intervalId = setInterval(fetchQuote, 30000); // Fetch a new quote every 30 seconds
     
