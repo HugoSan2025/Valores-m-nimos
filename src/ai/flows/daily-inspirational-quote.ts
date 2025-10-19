@@ -18,7 +18,7 @@ const DailyInspirationalQuoteOutputSchema = z.object({
 export type DailyInspirationalQuoteOutput = z.infer<typeof DailyInspirationalQuoteOutputSchema>;
 
 export async function getDailyInspirationalQuote(): Promise<DailyInspirationalQuoteOutput> {
-  noStore(); // This will prevent the response from being cached.
+  noStore(); // Prevent Next.js from caching the response of this function.
   return dailyInspirationalQuoteFlow();
 }
 
@@ -31,6 +31,9 @@ const dailyInspirationalQuoteFlow = ai.defineFlow({
       prompt: `Eres un experto en motivación y curador de citas. Genera una única frase inspiradora sobre temas variados como la vida, el trabajo, la superación personal o la felicidad. La fecha y hora actual es ${new Date().toISOString()} para asegurar que la cita sea única.`,
       output: {
         schema: DailyInspirationalQuoteOutputSchema,
+      },
+      config: {
+        temperature: 0.9, // Increase temperature for more variety
       },
     });
 
