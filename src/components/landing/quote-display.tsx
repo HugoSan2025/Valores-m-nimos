@@ -3,6 +3,7 @@
 import { useEffect, useState } from 'react';
 import type { DailyInspirationalQuoteOutput } from '@/ai/flows/daily-inspirational-quote';
 import { Skeleton } from '@/components/ui/skeleton';
+import { useToast } from "@/hooks/use-toast";
 
 const fallbackQuote = {
   quote: "La única forma de hacer un gran trabajo es amar lo que haces.",
@@ -12,20 +13,33 @@ const fallbackQuote = {
 export default function QuoteDisplay() {
   const [quoteData, setQuoteData] = useState<DailyInspirationalQuoteOutput | null>(null);
   const [loading, setLoading] = useState(true);
+  const { toast } = useToast();
 
   useEffect(() => {
     async function fetchQuote() {
       setLoading(true);
       try {
-        // Fetch desde la nueva API route, que no está cacheada.
         const response = await fetch(`/api/quote?t=${new Date().getTime()}`, { cache: 'no-store' });
+        
         if (!response.ok) {
-          throw new Error(`Failed to fetch: ${response.statusText}`);
+          // Leer el error del cuerpo de la respuesta si es posible
+          const errorBody = await response.json().catch(() => ({ message: response.statusText }));
+          throw new Error(`Error ${response.status}: ${errorBody.message || 'Failed to fetch quote'}`);
         }
+        
         const result = await response.json();
         setQuoteData(result);
       } catch (error) {
-        console.error("Error fetching daily quote:", error);
+        const errorMessage = error instanceof Error ? error.message : "An unknown error occurred";
+        console.error("Error fetching daily quote:", errorMessage);
+        
+        // Mostrar notificación de error al usuario
+        toast({
+          title: "Error al cargar la frase",
+          description: "No se pudo obtener una nueva frase. Se mostrará una de respaldo.",
+          variant: "destructive",
+        });
+
         setQuoteData(fallbackQuote);
       } finally {
         setLoading(false);
@@ -33,7 +47,7 @@ export default function QuoteDisplay() {
     }
     
     fetchQuote();
-  }, []);
+  }, [toast]); // Agregamos toast a las dependencias de useEffect
 
   const displayData = quoteData || fallbackQuote;
 
