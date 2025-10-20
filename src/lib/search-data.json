@@ -37,27 +37,20 @@
  },
  {
   "Analito": "Albúmina",
-  "Muestra": "Suero/Plasma",
-  "Límite de Blanco (LB)": "2 g/L (30.4 µmol/L)",
-  "Límite de Detección (LD)": "2 g/L (30.4 µmol/L)",
-  "Límite de Cuantificación (LC)": "2 g/L (30.4 µmol/L)"
- },
- {
-  "Analito": "Albúmina LCR",
   "Muestra": "Suero, plasma",
   "Límite de Blanco (LB)": "1 g/L (15 µmol/L)",
   "Límite de Detección (LD)": "3 g/L (46 µmol/L)",
   "Límite de Cuantificación (LC)": "3 g/L (46 µmol/L)"
  },
  {
-  "Analito": "Albúmina LCR",
+  "Analito": "Albúmina",
   "Muestra": "Orina",
   "Límite de Blanco (LB)": "2 mg/L (0.03 µmol/L)",
   "Límite de Detección (LD)": "3 mg/L (0.05 µmol/L)",
   "Límite de Cuantificación (LC)": "12 mg/L (0.18 µmol/L)"
  },
  {
-  "Analito": "Albúmina LCR",
+  "Analito": "Albúmina",
   "Muestra": "LCR",
   "Límite de Blanco (LB)": "20 mg/L (0.3 µmol/L)",
   "Límite de Detección (LD)": "36 mg/L (0.5 µmol/L)",
@@ -113,14 +106,14 @@
   "Límite de Cuantificación (LC)": "2.5 µmol/L (0.146 mg/dL)"
  },
  {
-  "Analito": "CA 125 II",
+  "Analito": "CA 125",
   "Muestra": "Suero/plasma",
   "Límite de Blanco (LB)": "0.6 U/mL (0.505 U/mL )",
   "Límite de Detección (LD)": "1.2 U/mL (0.567 U/mL)",
   "Límite de Cuantificación (LC)": "2.0 U/mL (0.694 U/mL)"
  },
  {
-  "Analito": "CA 15-3 II",
+  "Analito": "CA 15-3",
   "Muestra": "Suero/plasma",
   "Límite de Blanco (LB)": "1.0 U/mL (0.576 U/mL)",
   "Límite de Detección (LD)": "1.5 U/mL (1.10 U/mL )",
@@ -232,6 +225,13 @@
   "Límite de Cuantificación (LC)": "7 U/L (0.12 µkat/L)"
  },
  {
+  "Analito": "Creatina Kinasa MB",
+  "Muestra": "Suero/plasma",
+  "Límite de Blanco (LB)": "0.1 ng/mL",
+  "Límite de Detección (LD)": "0.3 ng/mL",
+  "Límite de Cuantificación (LC)": "1 ng/mL"
+ },
+ {
   "Analito": "Creatinina",
   "Muestra": "Suero/plasma",
   "Límite de Blanco (LB)": "15 µmol/L (0.17 mg/dL)",
@@ -265,6 +265,13 @@
   "Límite de Blanco (LB)": "11.0 pmol/L (3 pg/mL)",
   "Límite de Detección (LD)": "18.4 pmol/L (5 pg/mL)",
   "Límite de Cuantificación (LC)": "91.8 pmol/L (25 pg/mL)"
+ },
+ {
+  "Analito": "Etanol",
+  "Muestra": "Suero/plasma/Orina",
+  "Límite de Blanco (LB)": "2.2 mmol/L (0.101 g/L)",
+  "Límite de Detección (LD)": "2.2 mmol/L (0.101 g/L)",
+  "Límite de Cuantificación (LC)": "2.2 mmol/L (0.101 g/L)"
  },
  {
   "Analito": "Factores Reumatoideo",
@@ -629,5 +636,12 @@
   "Límite de Blanco (LB)": "50 pg/mL (36.9 pmol/L)",
   "Límite de Detección (LD)": "100 pg/mL (73.8 pmol/L)",
   "Límite de Cuantificación (LC)": "150 pg/mL (111 pmol/L)"
+ },
+ {
+  "Analito": "Vitamina D",
+  "Muestra": "Suero/plasma",
+  "Límite de Blanco (LB)": "3.2 ng/mL (8.0 nmol/L)",
+  "Límite de Detección (LD)": "3.5 ng/mL (8.7 nmol/L)",
+  "Límite de Cuantificación (LC)": "4.0 ng/mL (10 nmol/L)"
  }
 ]
