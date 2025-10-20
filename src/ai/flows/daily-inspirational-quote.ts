@@ -19,32 +19,35 @@ export type DailyInspirationalQuoteOutput = z.infer<typeof DailyInspirationalQuo
 
 // We wrap the AI call in Next.js's `cache` function.
 // This tells Next.js to cache the result of this function.
-// The `revalidate: 86400` option sets the cache to expire after 86400 seconds (24 hours).
-export const getDailyInspirationalQuote = cache(
-  async (): Promise<DailyInspirationalQuoteOutput> => {
-    console.log("Fetching new inspirational quote from API...");
-    // We generate a unique ID (the current date as YYYY-MM-DD) to ensure the AI generates
-    // a new quote each day, but Genkit returns a cached response for the same day.
-    const dailyId = new Date().toISOString().split('T')[0];
+// We now include the current date in the cache key to ensure it truly revalidates daily.
+export const getDailyInspirationalQuote = async (): Promise<DailyInspirationalQuoteOutput> => {
+    const today = new Date().toISOString().split('T')[0]; // YYYY-MM-DD
 
-    try {
-      const result = await dailyInspirationalQuoteFlow(dailyId);
-      return result;
-    }
-    catch (error) {
-        console.error("Error executing flow, returning fallback quote.", error);
-        // If the AI call fails for any reason, we return a fallback quote.
-        return {
-            quote: "La perseverancia no es una carrera larga; son muchas carreras cortas una tras otra.",
-            author: "Walter Elliot"
-        };
-    }
-  },
-  ['daily-inspirational-quote'], // A unique key for this cache entry
-  {
-    revalidate: 86400, // Revalidate every 24 hours (86400 seconds)
-  }
-);
+    const getCachedQuote = cache(
+        async (dailyId: string): Promise<DailyInspirationalQuoteOutput> => {
+            console.log(`Fetching new inspirational quote from API for date: ${dailyId}`);
+            try {
+                const result = await dailyInspirationalQuoteFlow(dailyId);
+                return result;
+            } catch (error) {
+                console.error("Error executing flow, returning fallback quote.", error);
+                // If the AI call fails for any reason, we return a fallback quote.
+                return {
+                    quote: "La perseverancia no es una carrera larga; son muchas carreras cortas una tras otra.",
+                    author: "Walter Elliot"
+                };
+            }
+        },
+        ['daily-inspirational-quote'], // Base key
+        {
+            // The tags allow us to revalidate this cache on demand if needed in the future
+            tags: [`daily-inspirational-quote:${today}`],
+        }
+    );
+    
+    // Call the cached function with today's date as the unique part of the execution
+    return getCachedQuote(today);
+};
 
 
 // 1. Define the prompt separately. This is the correct pattern.
