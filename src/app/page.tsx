@@ -6,9 +6,8 @@ import QuoteDisplay from '@/components/landing/quote-display';
 import { Card } from '@/components/ui/card';
 import { getDailyInspirationalQuote, DailyInspirationalQuoteOutput } from '@/ai/flows/daily-inspirational-quote';
 
-// Esta línea fuerza a Next.js a tratar esta página como dinámica,
-// ejecutándola en el servidor para cada petición.
-export const dynamic = 'force-dynamic';
+// This is no longer needed, as we will use revalidation for the quote
+// export const dynamic = 'force-dynamic';
 
 async function getQuoteData(): Promise<DailyInspirationalQuoteOutput> {
   try {
