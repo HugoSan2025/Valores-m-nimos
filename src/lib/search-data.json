@@ -1,14 +1,14 @@
 
 [
  {
-  "Analito": "Ácido Úrico",
+  "Analito": "Acido Urico",
   "Muestra": "Suero/plasma",
   "Límite de Blanco (LB)": "0.2 mg/dL",
   "Límite de Detección (LD)": "0.2 mg/dL",
   "Límite de Cuantificación (LC)": "0.2 mg/dL"
  },
  {
-  "Analito": "Ácido Úrico",
+  "Analito": "Acido Urico",
   "Muestra": "Orina",
   "Límite de Blanco (LB)": "2.2 mg/dL",
   "Límite de Detección (LD)": "2.2 mg/dL",
@@ -36,21 +36,21 @@
   "Límite de Cuantificación (LC)": "5 U/L (0.08 µkat/L)"
  },
  {
-  "Analito": "Albúmina",
+  "Analito": "Albumina",
   "Muestra": "Suero, plasma",
   "Límite de Blanco (LB)": "1 g/L (15 µmol/L)",
   "Límite de Detección (LD)": "3 g/L (46 µmol/L)",
   "Límite de Cuantificación (LC)": "3 g/L (46 µmol/L)"
  },
  {
-  "Analito": "Albúmina",
+  "Analito": "Albumina",
   "Muestra": "Orina",
   "Límite de Blanco (LB)": "2 mg/L (0.03 µmol/L)",
   "Límite de Detección (LD)": "3 mg/L (0.05 µmol/L)",
   "Límite de Cuantificación (LC)": "12 mg/L (0.18 µmol/L)"
  },
  {
-  "Analito": "Albúmina",
+  "Analito": "Albumina",
   "Muestra": "LCR",
   "Límite de Blanco (LB)": "20 mg/L (0.3 µmol/L)",
   "Límite de Detección (LD)": "36 mg/L (0.5 µmol/L)",
@@ -302,7 +302,7 @@
   "Límite de Cuantificación (LC)": "120 ng/mL (272 nmol/L)"
  },
  {
-  "Analito": "Fosfatasa Ácida",
+  "Analito": "Fosfatasa Acida",
   "Muestra": "Suero/plasma",
   "Límite de Blanco (LB)": "0.5 U/L (0.01 µkat/L)",
   "Límite de Detección (LD)": "0.5 U/L (0.01 µkat/L)",
@@ -526,7 +526,7 @@
   "Límite de Cuantificación (LC)": "3.0 g/L (0.3 g/dL)"
  },
  {
-  "Analito": "Proteinas Toral Orina/LCR",
+  "Analito": "Proteinas Total Orina/LCR",
   "Muestra": "Orina/LCR",
   "Límite de Blanco (LB)": "40 mg/L",
   "Límite de Detección (LD)": "40 mg/L",
@@ -603,7 +603,7 @@
   "Límite de Cuantificación (LC)": "2.2 mg/L (0.22 mg/dL)"
  },
  {
-  "Analito": "Triglicéridos",
+  "Analito": "Trigliceridos",
   "Muestra": "Suero/plasma",
   "Límite de Blanco (LB)": "0.1 mmol/L (8.85 mg/dL)",
   "Límite de Detección (LD)": "0.1 mmol/L (8.85 mg/dL)",
@@ -631,17 +631,17 @@
   "Límite de Cuantificación (LC)": "1.0 mmol/L"
  },
  {
-  "Analito": "Vitamin B12 II",
-  "Muestra": "Suero/plasma",
-  "Límite de Blanco (LB)": "50 pg/mL (36.9 pmol/L)",
-  "Límite de Detección (LD)": "100 pg/mL (73.8 pmol/L)",
-  "Límite de Cuantificación (LC)": "150 pg/mL (111 pmol/L)"
- },
- {
   "Analito": "Vitamina D",
   "Muestra": "Suero/plasma",
   "Límite de Blanco (LB)": "3.2 ng/mL (8.0 nmol/L)",
   "Límite de Detección (LD)": "3.5 ng/mL (8.7 nmol/L)",
   "Límite de Cuantificación (LC)": "4.0 ng/mL (10 nmol/L)"
+ },
+ {
+  "Analito": "Vitamina B12",
+  "Muestra": "Suero\/plasma",
+  "Límite de Blanco (LB)": "50 pg\/mL (36.9 pmol\/L)",
+  "Límite de Detección (LD)": "100 pg\/mL (73.8 pmol\/L)",
+  "Límite de Cuantificación (LC)": "150 pg\/mL (111 pmol\/L)"
  }
 ]
