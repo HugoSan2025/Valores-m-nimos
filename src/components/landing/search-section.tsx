@@ -40,11 +40,17 @@ export default function SearchSection() {
     }
   };
 
+  const clearSearch = () => {
+    setQuery('');
+    setResults([]);
+    setHasSearched(false);
+  };
+
   return (
     <section id="busqueda" className="section-padding">
       <div className="max-w-3xl mx-auto">
         <h2 className="text-4xl font-bold text-center text-foreground mb-8">Buscar en el Sitio</h2>
-        <div className="flex mb-8 card p-2 bg-card">
+        <div className="flex relative items-center mb-8 card p-2 bg-card">
           <Input
             type="text"
             id="searchInput"
@@ -52,8 +58,19 @@ export default function SearchSection() {
             value={query}
             onChange={(e) => setQuery(e.target.value)}
             onKeyUp={handleSearchKey}
-            className="flex-grow p-3 text-foreground focus:outline-none rounded-l-lg bg-card border-input"
+            className="flex-grow p-3 text-foreground focus:outline-none rounded-l-lg bg-card border-input pr-10"
           />
+          {query && (
+            <Button 
+              variant="ghost" 
+              size="icon" 
+              onClick={clearSearch} 
+              className="absolute right-32 h-8 w-8 text-muted-foreground hover:text-foreground"
+            >
+              <i className="fas fa-times text-xl"></i>
+              <span className="sr-only">Borrar búsqueda</span>
+            </Button>
+          )}
           <Button onClick={performSearch} className="btn-primary flex items-center justify-center w-28">
             <i className="fas fa-search mr-2"></i> Buscar
           </Button>
