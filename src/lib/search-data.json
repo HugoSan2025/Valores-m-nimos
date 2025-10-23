@@ -287,6 +287,13 @@
   "Límite de Cuantificación (LC)": "10 UI\/mL"
  },
  {
+  "Analito": "Fenobarbital",
+  "Muestra": "Suero\/plasma",
+  "Límite de Blanco (LB)": "1.2 g\/ml (5.2 umol\/ml)",
+  "Límite de Detección (LD)": "2.4 g\/ml (10.3 umol\/ml)",
+  "Límite de Cuantificación (LC)": "3.0 g\/ml (12.9 umol\/ml)"
+ },
+ {
   "Analito": "Ferritina",
   "Muestra": "Suero\/plasma",
   "Límite de Blanco (LB)": "0.25 µg\/L (ng\/mL)",
@@ -642,12 +649,7 @@
   "Límite de Blanco (LB)": "50 pg\/mL (36.9 pmol\/L)",
   "Límite de Detección (LD)": "100 pg\/mL (73.8 pmol\/L)",
   "Límite de Cuantificación (LC)": "150 pg\/mL (111 pmol\/L)"
- },
- {
-  "Analito": "Vitamina D",
-  "Muestra": "Suero\/plasma",
-  "Límite de Blanco (LB)": "3.2 ng\/mL (8.0 nmol\/L)",
-  "Límite de Detección (LD)": "3.5 ng\/mL (8.7 nmol\/L)",
-  "Límite de Cuantificación (LC)": "4.0 ng\/mL (10 nmol\/L)"
  }
 ]
+
+I'll be making changes to the file `src/lib/search-data.json`.
