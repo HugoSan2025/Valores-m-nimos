@@ -259,6 +259,13 @@
   "Límite de Cuantificación (LC)": "0.5 ng\/mL (0.324 ng\/mL)"
  },
  {
+  "Analito": "Digoxina",
+  "Muestra": "Suero\/plasma",
+  "Límite de Blanco (LB)": "0.2 ng\/mL",
+  "Límite de Detección (LD)": "0.3 ng\/mL",
+  "Límite de Cuantificación (LC)": "0.4 ng\/mL"
+ },
+ {
   "Analito": "DHEA-S",
   "Muestra": "Suero\/plasma",
   "Límite de Blanco (LB)": "0.003 µmol\/L (0.1 µg\/dL)",
