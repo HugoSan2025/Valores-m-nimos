@@ -12,6 +12,9 @@ type SearchResultItem = {
   "Límite de Blanco (LB)": string;
   "Límite de Detección (LD)": string;
   "Límite de Cuantificación (LC)": string;
+  "Dilucion recomendada": string;
+  "Diluyente": string;
+  "Valor Maximo Reportable": string;
 };
 
 export default function SearchSection() {
@@ -95,11 +98,14 @@ export default function SearchSection() {
                     <CardHeader>
                       <CardTitle className="text-xl font-semibold text-foreground mb-1">{item.Analito}</CardTitle>
                     </CardHeader>
-                    <CardContent className="grid grid-cols-1 md:grid-cols-2 gap-x-6 gap-y-2 text-sm">
+                    <CardContent className="grid grid-cols-1 md:grid-cols-2 gap-x-6 gap-y-3 text-sm">
                       <p><strong className="text-primary/90">Muestra:</strong> {item.Muestra}</p>
                       <p><strong className="text-primary/90">Límite de Blanco (LB):</strong> {item["Límite de Blanco (LB)"]}</p>
                       <p><strong className="text-primary/90">Límite de Detección (LD):</strong> {item["Límite de Detección (LD)"]}</p>
                       <p><strong className="text-primary/90">Límite de Cuantificación (LC):</strong> {item["Límite de Cuantificación (LC)"]}</p>
+                      <p><strong className="text-primary/90">Dilución recomendada:</strong> {item["Dilucion recomendada"]}</p>
+                      <p><strong className="text-primary/90">Diluyente:</strong> {item.Diluyente}</p>
+                      <p className="md:col-span-2"><strong className="text-primary/90">Valor Máximo Reportable:</strong> {item["Valor Maximo Reportable"]}</p>
                     </CardContent>
                 </Card>
               ))}
