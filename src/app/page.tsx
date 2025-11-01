@@ -118,7 +118,7 @@ export default async function Home() {
                   className="w-full h-auto object-cover transition duration-300 hover:scale-[1.02] transform"
                   data-ai-hint={featuredImage.hint}
                 />
-                <div className="p-3 text-center bg-muted text-sm font-light text-muted-foreground">
+                <div className="p-3 text-center bg-muted text-sm font-bold text-primary">
                     Visión y Liderazgo Digital
                 </div>
               </div>
